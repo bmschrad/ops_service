@@ -4,15 +4,6 @@ info:
   version: '1.0'
 basePath: /v1.0
 paths:
-  /items:
-    get:
-      responses:
-        '200':
-          description: Fetch a list of items
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Item'
   /status:
     get:
       responses:
@@ -22,15 +13,17 @@ paths:
             type: object
             items:
               $ref: '#/definitions/Status'
+    post:
+        parameters:
+        - in: body
+          name: ops_status
+          required: true
+          schema:
+              $ref: '#/definitions/Status'
+        responses:
+            '201':
+                description: 'Status updated'
 definitions:
-  Item:
-    type: object
-    properties:
-      id:
-        type: integer
-        format: int64
-      name:
-        type: string
   Status:
     type: object
     properties:
