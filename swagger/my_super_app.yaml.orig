@@ -1,0 +1,47 @@
+swagger: "2.0"
+
+info:
+    title: "OPs API"
+    version: "1.0"
+
+basePath: /v1.0
+
+paths:
+    /items:
+        get:
+            responses:
+                '200':
+                    description: 'Fetch a list of items'
+                    schema:
+                        type: array
+                        items:
+                            $ref: '#/definitions/Item'
+    /status:
+        get:
+            responses:
+                '200':
+                    description: 'SLTC Status'
+                    schema:
+                        type: object
+                        items:
+                            $ref: '#/definitions/Status'
+
+definitions:
+    Item:
+        type: object
+        properties:
+            id:
+                type: integer
+                format: int64
+            name: { type: string }
+    Status:
+        type: object
+        properties:
+            hb:
+                type: "string"
+                format: "date-time"
+            tmhp_up:
+                type: "boolean"
+            alerts:
+
+            name: { type: string }
